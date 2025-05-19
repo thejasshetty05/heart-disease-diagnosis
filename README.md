@@ -26,3 +26,14 @@ A machine learning system to predict the risk of heart disease using clinical da
 - Publicly available dataset (e.g., UCI Heart Disease Dataset)
 - Contains attributes like age, cholesterol, blood pressure, chest pain, etc.
 
+## 📸 Snapshots of Project
+
+### ✅ Website UI
+![Website UI](s1.jpg)
+
+### ✅ Website UI
+![Website UI](s5.jpg)
+
+### ✅ Sample Output
+![Sample Output](s6.jpg)
+
