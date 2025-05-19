@@ -17,7 +17,7 @@ A machine learning system to predict the risk of heart disease using clinical da
 
 - **Language:** Python  
 - **Libraries:** Scikit-learn, Pandas, Matplotlib, Seaborn  
-- **ML Techniques:** Logistic Regression, Decision Tree, Random Forest, etc.
+- **ML Techniques:** Logistic Regression, Decision Tree
 
 ---
 
