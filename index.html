@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Diagnosis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6; /* Light reddish background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ff6666;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .form-section, .info-section {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #ff6666;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff4d4d;
+        }
+        .input-info {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .input-info h3 {
+            margin-bottom: 10px;
+        }
+        .input-info ul {
+            list-style: none;
+            padding: 0;
+        }
+        .input-info li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Heart Disease Diagnosis</h1>
+    </header>
+    <div class="container">
+        <div class="info-section">
+            <h2>About Heart Disease</h2>
+            <p>Heart disease refers to various conditions affecting the heart, such as coronary artery disease, arrhythmias, or congenital defects. Maintaining a healthy lifestyle can significantly reduce your risk.</p>
+            <h3>Tips for a Healthy Heart</h3>
+            <ul>
+                <li>Eat a balanced diet rich in fruits, vegetables, and whole grains.</li>
+                <li>Exercise regularly and maintain a healthy weight.</li>
+                <li>Avoid smoking and limit alcohol consumption.</li>
+                <li>Manage stress effectively through relaxation techniques.</li>
+            </ul>
+        </div>
+        <div class="form-section">
+            <h2>Enter Your Details</h2>
+            <form method="post" action="/predict">
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age" placeholder="Enter your age" required>
+
+                <label for="sex">Sex (0 = Female, 1 = Male)</label>
+                <input type="text" id="sex" name="sex" placeholder="Enter your sex" required>
+
+                <label for="cp">Chest Pain Type</label>
+                <input type="text" id="cp" name="cp" placeholder="Enter chest pain type" required>
+
+                <label for="trestbps">Resting Blood Pressure</label>
+                <input type="text" id="trestbps" name="trestbps" placeholder="Enter resting blood pressure" required>
+
+                <label for="chol">Cholesterol</label>
+                <input type="text" id="chol" name="chol" placeholder="Enter cholesterol level" required>
+
+                <label for="fbs">Fasting Blood Sugar (1 = True, 0 = False)</label>
+                <input type="text" id="fbs" name="fbs" placeholder="Enter fasting blood sugar" required>
+
+                <label for="restecg">Resting ECG Results</label>
+                <input type="text" id="restecg" name="restecg" placeholder="Enter resting ECG results" required>
+
+                <label for="thalach">Maximum Heart Rate Achieved</label>
+                <input type="text" id="thalach" name="thalach" placeholder="Enter maximum heart rate achieved" required>
+
+                <label for="exang">Exercise Induced Angina</label>
+                <input type="text" id="exang" name="exang" placeholder="Enter exercise induced angina" required>
+
+                <label for="oldpeak">ST Depression Induced by Exercise</label>
+                <input type="text" id="oldpeak" name="oldpeak" placeholder="Enter ST depression" required>
+
+                <label for="slope">Slope of ST Segment</label>
+                <input type="text" id="slope" name="slope" placeholder="Enter slope of ST segment" required>
+
+                <label for="ca">Number of Major Vessels (0-4)</label>
+                <input type="text" id="ca" name="ca" placeholder="Enter number of major vessels" required>
+
+                
+
+                <button type="submit">Submit</button>
+            </form>
+            {% if prediction %}
+                <div class="result">
+                    <h3>Prediction Result</h3>
+                    <p>{{ prediction }}</p>
+                </div>
+            {% endif %}
+        </div>
+        <div class="input-info">
+            <h3>Medical Information About Inputs</h3>
+            <ul>
+                <li><strong>Age:</strong> Represents the age of the individual, as age is a significant risk factor for heart disease.</li>
+                <li><strong>Sex:</strong> Biological sex influences the risk and presentation of heart disease.</li>
+                <li><strong>Chest Pain Type:</strong> Categorizes the type of chest pain, which can indicate various underlying heart conditions. For instance, angina often signifies restricted blood flow to the heart.</li>
+                <li><strong>Resting Blood Pressure:</strong> High resting blood pressure (hypertension) can increase the risk of heart disease and complications.</li>
+                <li><strong>Cholesterol:</strong> High levels of cholesterol, especially LDL, are associated with an increased risk of plaque buildup in arteries.</li>
+                <li><strong>Fasting Blood Sugar:</strong> Elevated fasting blood sugar levels may indicate diabetes, a condition that significantly raises heart disease risk.</li>
+                <li><strong>Resting ECG Results:</strong> An electrocardiogram (ECG) can detect heart abnormalities such as arrhythmias, ischemia, or hypertrophy.</li>
+                <li><strong>Maximum Heart Rate Achieved:</strong> Indicates the heart's efficiency and condition during physical exertion.</li>
+                <li><strong>Exercise Induced Angina:</strong> Refers to chest pain triggered by exercise, often linked to inadequate oxygen supply to the heart.</li>
+                <li><strong>ST Depression:</strong> Changes in the ST segment on an ECG can signal ischemia or other cardiac issues.</li>
+                <li><strong>Slope of ST Segment:</strong> The slope provides insight into the heart's response to exercise and can indicate ischemia severity.</li>
+                <li><strong>Number of Major Vessels:</strong> Fluoroscopic imaging helps identify blockages in the major coronary arteries.</li>
+            </ul>
+        </div>
+        
+    </div>
+</body>
+</html>
